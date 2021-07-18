@@ -6,20 +6,21 @@ import (
 	"strings"
 )
 
-func _main() {
+func main() {
 	s := `
-// comment at the beginning
-public class AddTwoNumbers {
-   /*
-    * This method adds two numbers
-    */
-   public static void main(String[] args) {
-      /* single line with multiline style */
-      int num1 = 5, num2 = 15, sum;
-      sum = num1 + num2;
-	  // we print the result
-      System.out.println("Sum of these numbers: "+sum);
-   }
+// code stats with comments
+// that goes to multi line
+class Incrementer {
+  int count = 0; // keeps a count
+  string test = "http:/\/test.com"
+  string test2 = 'http://test.com'
+  /*
+   * This method increments the count
+   */
+  public void inc() {
+    // increment the counter here
+    count++;
+  } /* end of method */
 }`
 	result, _ := stripComments(s)
 

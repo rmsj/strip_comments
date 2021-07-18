@@ -14,6 +14,22 @@ func TestStripComments(t *testing.T) {
 	// what we are testing
 	tests := []string{
 		`
+// code stats with comments
+// that goes to multi line
+class Incrementer {
+  int count = 0; // keeps a count
+  string test = "http:/\/test.com"
+  string test2 = 'http://test.com'
+  /*
+   * This method increments the count
+   */
+  public void inc() {
+    // increment the counter here
+    count++;
+  } /* end of method */
+}
+`,
+		`
 // comment at the beginning
 public class AddTwoNumbers {
    /*
@@ -56,6 +72,17 @@ class CheckEvenOdd
 
 	// and what we expect
 	expected := []string{
+		`
+class Incrementer {
+  int count = 0; 
+  string test = "http:/\/test.com"
+  string test2 = 'http://test.com'
+  
+  public void inc() {
+    
+    count++;
+  } 
+}`,
 		`
 public class AddTwoNumbers {
    
@@ -106,7 +133,7 @@ class CheckEvenOdd
 				if strings.Compare(expected[testID], response) != 0 {
 					t.Logf("\t%s\tTest %d:\tShould remove all comments.", succeed, testID)
 				} else {
-					t.Errorf("\t%s\tTest %d:\tShould remove all comments : %t-%t", failed, testID, test, response)
+					t.Errorf("\t%s\tTest %d:\tShould remove all comments : %v != %v", failed, testID, test, response)
 				}
 			}
 		}
