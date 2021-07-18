@@ -22,14 +22,14 @@ class Incrementer {
     count++;
   } /* end of method */
 }`
-	result, _ := stripComments(s)
+	result, _ := StripComments(s)
 
 	fmt.Println(strings.TrimSpace(result))
 }
 
-// stripComments read a string that contains a source code of a java class, function
+// StripComments read a string that contains a source code of a java class, function
 // and removes the single line and multiline comments
-func stripComments(s string) (string, error) {
+func StripComments(s string) (string, error) {
 
 	// to save the result as we build it char by char
 	var result string

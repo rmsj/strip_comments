@@ -125,7 +125,7 @@ class CheckEvenOdd
 		for testID, test := range tests {
 			t.Logf("\tTest %d:\tWhen checking the java source", testID)
 			{
-				response, err := stripComments(test)
+				response, err := StripComments(test)
 				if err != nil {
 					t.Fatalf("\t%s\tTest %d:\tShould be able to parse the given string : %v", failed, testID, err)
 				}
