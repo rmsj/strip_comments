@@ -5,27 +5,7 @@ SHELL := /bin/bash
 
 
 test:
-	go test ./... -count=1
+	go test -v
 
-# ==============================================================================
-# Modules support
-
-deps-reset:
-	git checkout -- go.mod
-	go mod tidy
-	go mod vendor
-
-tidy:
-	go mod tidy
-	go mod vendor
-
-deps-upgrade:
-	go get -u -t -d -v ./...
-	go mod tidy
-	go mod vendor
-
-deps-cleancache:
-	go clean -modcache
-
-list:
-	go list -mod=mod all
+run:
+	go build strip_comments.go && ./strip_comments
